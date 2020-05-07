@@ -1,0 +1,200 @@
+@charset "UTF-8";
+/* 全体背景：黒、文字：白
+* {
+  border: 1px rgb(174, 177, 142) solid;
+} */
+
+html {
+  font-family: "Meiryo", sans-serif;
+}
+
+html * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+
+
+/* コンテンツ表示幅：960、画面両幅の余白：自動 */
+/* .container {
+  width: 960px;
+  margin: 0 auto;
+} */
+
+/* 5/8追加　レスポンシブ対応用。.conteinerの代わりにwrapperを作成 */
+.wrapper {
+  margin: 0 auto 0 auto;
+  max-width: 960px;
+}
+
+
+
+/* 画面上部 *********************************************************/
+
+/* 上部「商品一覧」文字の太さ：普通に。ﾀｲﾄﾙに下線入れる */
+.pageTitle {
+  font-weight: normal;
+  border-bottom: 2px solid;
+}
+
+/* 検索結果を左寄せに。セール対象～並び替えを右寄せに。検索結果の並びと並列化 */
+.search {
+  display: flex; /*ある要素に定義するだけで、その直下の要素が並列になる便利なスタイル。フレックスボックスを利用するためには、flexboxを利用する親要素に、display:flexを追加します。これにより、親要素がflexコンテナとなり、子要素がflexアイテムとなります。*/
+  justify-content: space-between; /* 均等配置。各アイテムを均等に配置し最初のアイテムは先頭に寄せ、最後のアイテムは末尾に寄せる */
+}
+
+/* 5/8追加　レスポンシブ対応　検索結果 */
+.search .result{
+  display: block;
+  margin-right: 30%;
+}
+
+.search .target {
+  display: inline-block;
+  /* 上部のセール対象、送料無料を横並びに */
+  /* インラインレベルのブロックコンテナを生成する。要素全体としてはインライン要素のような表示形式だが、内部はブロックボックスで高さ・横幅などを指定できる。 */
+}
+
+/* <LABEL>タグはフォームの構成部品（一行テキストボックス・チェックボックス・ラジオボタン等）と、 その項目名（ラベル）を明確に関連付けるための要素です。 これによりチェックボックスやラジオボタンでは、 関連付けられたテキスト部分をクリックしてもチェックを付けることができるようになります。 */
+/* <LABEL>タグの使用方法は2通りあります。 1つは<LABEL>タグのfor属性の値と、フォーム部品のid属性の値を同じものにすることで両者を関連付ける方法です。 もう1つは<LABEL>～</LABEL>内にフォーム部品とテキストを含める方法です。後者の方法は、Internet Explorer5や6には対応していないようなので、できるだけ前者を用いた方が良いでしょう。 */
+.search .target .label {
+  margin-right: 15px;
+}
+
+.search .target .showSale {
+  margin-right: 15px;
+  display: inline-block;
+}
+
+.search .target .showDelv {
+  margin-right: 22px;
+  display: inline-block;
+}
+
+.search .sort {
+  display: inline-block;
+  /* displayプロパティは、ブロックレベル・インライン・テーブル・ルビ・フレックスコンテナ等の、要素の表示形式を指定する際に使用します。 */
+}
+
+.search .target :hover {
+  color: rgb(143, 143, 143);
+  text-decoration: none;
+}
+
+.search .sort .sorting:hover {
+  color: rgb(83, 83, 83);
+  text-decoration: none;
+}
+
+/* 商品一覧 ***************************************/
+/************************************************/
+
+.list {
+  /* listをフレックスボックスにする */
+  display: flex;
+  /* フレックスアイテムの折り返しの有無、折り返す場合の折り返し行の積み上げ方向を指定できます。wrap 折り返しあり */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* 均等間隔で横並びになる。justify※正当化する。space-betweenアイテムの間にスペースを均等に割り付け。
+justify-contentプロパティは、コンテナ内全体の主軸方向（初期値では横方向）の揃え位置を指定する際に使用します。
+align-contentプロパティの主軸方向（初期値では横方向）版と考えると理解しやすいでしょう。 */
+}
+
+/* CSS において ::after は、選択した要素の最後の子要素として擬似要素を作成します。よく content プロパティを使用して、要素に装飾的な内容を追加するために用いられます。この要素は既定でインラインです。 */
+.list::after {
+  /* contentプロパティは、要素の直前または直後に、文字列や画像などのコンテンツを挿入する際に使用します。 contentプロパティを適用することができるのは、:before擬似要素および:after擬似要素のみです。 */
+  content: "";
+  display: block; /* ブロックボックスを生成する */
+  width: 250px;
+}
+
+.item {
+  /* flexプロパティは、フレックスコンテナ内のアイテムの幅についてまとめて指定する際に使用
+  フレックスアイテムとは、フレックスコンテナ内のアイテムのことです。 具体的に言うと、display:flex; を指定したボックスがフレックスボックス、その子要素がフレックスアイテムです。 */
+
+  flex: 1 1 250px; /* 5/8追加　レスポンシブ */
+  /* flex: 0 1 250px; フレックスアイテムの伸び縮みとか。250pxはフレックスアイテムの幅？ */
+
+  margin-bottom: 30px; /* 上下間のフレックスアイテムの余白 */
+
+  /* 5/8追加 レスポンシブ*/
+  max-width: 100%;
+  height: auto;
+}
+
+/* positionプロパティは、ボックスの配置方法（基準位置）が、相対位置か絶対位置かを指定する際に使用します。
+positionプロパティで指定するのは、配置方法（基準位置）のみです。 実際の表示位置の指定には、 top、 bottom、 left、 rightを併用して、基準位置からの距離を設定する必要があります。 */
+/* relative相対位置への配置となります。positionプロパティでstaticを指定した場合に表示される位置が基準位置となります。 */
+.item .image {
+  position: relative;
+  text-align: center; /* image内のSALEや商品名を中央に */
+}
+
+.item .image :hover {
+  color: rgb(143, 143, 143);
+  text-decoration: none;
+}
+
+.item .image img {
+  max-width: 100%;
+  height: auto;
+  /* ここで商品画像が均等に並ぶ */
+}
+
+.item .status {
+  /* absolute: 絶対位置への配置となります。親ボックスにpositionプロパティのstatic以外の値が指定されている場合には、親ボックスの左上が基準位置となります。親ボックスにpositionプロパティのstatic以外の値が指定されていない場合には、ウィンドウ全体の左上が基準位置となります。*/
+  position: absolute;
+  border-radius: 50%;
+  width: 4em; /* 「em」はfont-sizeプロパティの値を1とする大きさ */
+  height: 4em;
+  font-size: 12px;
+  display: flex;
+  align-items: center; /* align-itemsプロパティは、コンテナ内のアイテムの交差軸方向（初期値では縦方向）のデフォルト揃え位置を指定する際に使用 */
+  justify-content: center;
+  background: #bf0000;
+  color: #fff;
+}
+
+.item .detail {
+  text-align: center; /* 価格、送料無料を中央に */
+}
+
+.item .price {
+  display: inline-block; /* 価格と税込みを1つのインラインブロックにまとめる */
+}
+
+.item .price span {
+  font-size: 180%; /* 数値価格の大きさ */
+}
+
+/* +送料240円 */
+.item .shipping-fee {
+  display: inline-block; /* +送料240円をインラインブロック化 */
+  font-size: 90%; /* +送料240円が改行されたのでフォントを小さくした */
+  /* background-color: #f7cd12; */
+  color: #000;
+}
+
+/* 送料無料 */
+.item .shipping-fee.none {
+  font-size: 90%;
+  /* background-color: #fff; */
+  color: #bf0000;
+}
+
+/* フッター */
+.footer {
+  margin-top: 10px;
+  padding: 5px 15px 20px;
+  font-size: 12px;
+  color: #3f5170;
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    margin: 0 8px;
+  }
+}
